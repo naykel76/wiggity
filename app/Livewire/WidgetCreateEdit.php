@@ -14,10 +14,19 @@ class WidgetCreateEdit extends Component
 
     public WidgetFormObject $form;
     protected string $modelClass = Widget::class;
+    public array $dateRangeOptions = [];
 
-    public function fillForm()
+    public function mount()
     {
-        $model = Widget::factory()->make();
+        $this->dateRangeOptions = Widget::getDateRangeOptions();
+    }
+
+    public function fillForm(bool $useFactory = false): void
+    {
+        $model = $useFactory
+            ? Widget::factory()->make()
+            : $this->form->createNewModel();
+
         $this->form->init($model);
     }
 

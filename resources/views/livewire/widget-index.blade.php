@@ -15,11 +15,18 @@
                 <th></th>
             </tr>
         </x-slot:thead>
-        <x-slot:tbody >
+        <x-slot:tbody>
             @forelse($items as $item)
                 <tr wire:key="{{ $item->id }}">
                     <td wire:loading.class="green">{{ str_pad($item->id, 5, 0, STR_PAD_LEFT) }}</td>
-                    <td>{{ $item->title }}</td>
+                    <td>
+                        {{ $item->title }}
+                        {{-- when i have the key, how do i get the value from the array? --}}
+                        <div class="flex space-x txt-xs">
+                            <strong>Country</strong>: {{ $item->country ?? 'None' }}
+                            <strong>RelatedID</strong>: {{ $item->related_widget_id ?? 'None' }}
+                        </div>
+                    </td>
                     <td>{{ $item->start_date }}</td>
                     <td>{{ $item->end_date }}</td>
                     <td>

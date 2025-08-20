@@ -15,13 +15,12 @@ class WidgetIndex extends Component
 
     protected string $modelClass = Widget::class;
     public string $pageTitle = 'Widget Table';
+    public int $perPage = 8;
 
     #[On('model-saved')]
     public function refreshComponent()
     {
-        // Which one and why? How can i handle the lag?
         $this->resetPage(); // resets pagination to page 1 and triggers a re-render
-        $this->dispatch('$refresh');
     }
 
     protected function prepareData()
@@ -29,6 +28,6 @@ class WidgetIndex extends Component
         $query = $this->modelClass::query();
         $query = $this->applySorting($query);
 
-        return ['items' => $query->paginate(8)];
+        return ['items' => $query->paginate($this->perPage)];
     }
 }

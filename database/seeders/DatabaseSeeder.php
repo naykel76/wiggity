@@ -14,7 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Widget::factory(2)->create();
+        // Widget::factory(1)->create(['start_date' => now()]);
+        Widget::factory(1)->future()->create();
+        Widget::factory(1)->past()->create();
 
         User::factory()->create([
             'name' => 'Test User',
