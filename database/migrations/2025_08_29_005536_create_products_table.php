@@ -22,9 +22,10 @@ return new class extends Migration
             $table->text('description')->nullable(); // Full description
             $table->string('main_image')->nullable();
 
-            // Product Codes
+            // Product Codes and Identifiers
             $table->string('slug')->unique()->nullable();
             $table->string('code')->unique()->nullable();
+            $table->string('department')->nullable();
 
             // Pricing & Inventory
             $table->integer('price')->nullable();

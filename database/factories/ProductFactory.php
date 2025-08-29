@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -14,20 +15,24 @@ class ProductFactory extends Factory
     {
         $startDate = $this->randomStartDate();
         $price = fake()->numberBetween(500, 100000);
-        
+        $department = fake()->randomElement(array_keys(Product::DEPARTMENT));
+
         return [
             'name' => fake()->sentence(random_int(3, 10)),
             'headline' => '',
             'description' => fake()->paragraphs(1, true),
             'main_image' => '',
-            'code' => fake()->unique()->bothify('PRO-####'),
+            'code' => fake()->unique()->bothify($department . '-####'),
+            'department' => $department,
             'price' => $price,
             'qoh' => fake()->numberBetween(0, 15),
+            // NK::TD Create a state for special pricing
             'special_start_date' => $startDate,
             'special_end_date' => $startDate->copy()->addDays(random_int(1, 10)),
             'special_price' => round($price * 0.8, 2), // 20% off
             'active' => fake()->boolean(),
             'extra_data' => null,
+            'created_at' => Carbon::instance($this->faker->dateTimeBetween('-18 months', '-1 months')),
         ];
     }
 
