@@ -15,7 +15,7 @@ class Product extends Model
      * purposes to use in filtering and selection. In a real app, this would
      * likely be a separate table with relationships.
      */
-    public const DEPARTMENT = [
+    public const DEPARTMENTS = [
         'GAD' => 'Gadgets',
         'WID' => 'Widgets',
         'DOO' => 'Doohickeys',

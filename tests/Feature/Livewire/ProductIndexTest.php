@@ -2,6 +2,7 @@
 
 use App\Livewire\ProductIndex;
 use App\Models\Product;
+use Illuminate\Support\Str;
 use Livewire\Livewire;
 
 /**
@@ -28,19 +29,13 @@ describe('rendering', function () {
             ->assertSee('No products found...');
     });
 
-    // WTF NOTES:
-    // - This test passes when there are rubbish assertSee values. Why? For
-    //   example: $product->wtf is not a real property, but the test still
-    //   passes.
-    // - Additionally the test intermittently fails (on the title I think)
-
     it('displays product data correctly in table rows', function () {
         $product = createProduct();
 
         Livewire::test(ProductIndex::class)
             ->assertSee([
                 $product->id,
-                $product->name,
+                Str::limit($product->name, 60), // Test the truncated version
                 $product->code,
                 $product->price,
                 $product->active,

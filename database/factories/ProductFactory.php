@@ -15,10 +15,10 @@ class ProductFactory extends Factory
     {
         $startDate = $this->randomStartDate();
         $price = fake()->numberBetween(500, 100000);
-        $department = fake()->randomElement(array_keys(Product::DEPARTMENT));
+        $department = fake()->randomElement(array_keys(Product::DEPARTMENTS));
 
         return [
-            'name' => fake()->sentence(random_int(3, 10)),
+            'name' => fake()->realText(random_int(40, 100)),
             'headline' => '',
             'description' => fake()->paragraphs(1, true),
             'main_image' => '',
