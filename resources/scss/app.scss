@@ -20,3 +20,8 @@
 
 @use '../../node_modules/nk_jtb/src/build' as *;
 @use '../../node_modules/nk_jtb/src/extras/nk-docs' as * with($question-color: #c40c9a);
+
+
+th, td {
+    padding-block: 0.5rem;
+}

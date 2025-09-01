@@ -19,13 +19,13 @@ class ProductFactory extends Factory
 
         return [
             'name' => fake()->realText(random_int(40, 100)),
-            'headline' => '',
-            'description' => fake()->paragraphs(1, true),
+            'headline' => fake()->paragraphs(1, true),
+            'description' => fake()->paragraphs(random_int(1, 5), true),
             'main_image' => '',
             'code' => fake()->unique()->bothify($department . '-####'),
             'department' => $department,
             'price' => $price,
-            'qoh' => fake()->numberBetween(0, 15),
+            'stock' => fake()->numberBetween(0, 15),
             // NK::TD Create a state for special pricing
             'special_start_date' => $startDate,
             'special_end_date' => $startDate->copy()->addDays(random_int(1, 10)),

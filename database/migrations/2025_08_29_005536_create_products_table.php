@@ -29,7 +29,7 @@ return new class extends Migration
 
             // Pricing & Inventory
             $table->integer('price')->nullable();
-            $table->integer('qoh')->default(0);
+            $table->integer('stock')->default(0);
 
             // Special Pricing
             $table->datetime('special_start_date')->nullable();

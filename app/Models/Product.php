@@ -4,11 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Naykel\Gotime\Casts\FloatAsInteger;
 
 class Product extends Model
 {
     /** @use HasFactory<\Database\Factories\ProductFactory> */
     use HasFactory;
+
+    protected $casts = [
+        'price' => FloatAsInteger::class . ':2',
+        'special_price' => FloatAsInteger::class . ':2',
+    ];
 
     /**
      * A list of product departments for categorisation. This is for demo

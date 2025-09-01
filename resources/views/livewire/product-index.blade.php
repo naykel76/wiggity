@@ -1,5 +1,8 @@
 <div>
     <div class="bx">
+        <x-gt-resource-action action="create" dispatchTo="product-create-edit" text="Create Using DispatchTo" />
+    </div>
+    <div class="bx">
         <div class="bx-header flex gap">
             <div class="bx-title">Active Filters</div>
             <div>
@@ -68,13 +71,14 @@
                     <td>
                         {{ Str::limit($item->name, 60) }}
                         <div class="flex space-x txt-xs">
-                            <strong>Department</strong>: {{ \App\Models\Product::DEPARTMENTS[$item->department] }}
+                            <strong>Department</strong>: {{ \App\Models\Product::DEPARTMENTS[$item->department] ?? 'none' }}
                         </div>
                     </td>
                     <td>{{ $item->code }}</td>
                     <td>{{ $item->price }}</td>
                     <td>{{ $item->active ? 'true' : 'false' }}</td>
                     <td>{{ $item->created_at }}</td>
+                    <td><x-gt-resource-action action="edit" dispatchTo="product-create-edit" :id="$item->id" /></td>
                 </tr>
             @empty
                 <tr>

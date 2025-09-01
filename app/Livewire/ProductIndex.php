@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Product;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Naykel\Gotime\Traits\Filterable;
@@ -30,6 +31,12 @@ class ProductIndex extends Component
             ],
         ],
     ];
+
+    #[On('model-saved')]
+    public function refreshComponent()
+    {
+        $this->resetPage(); // resets pagination to page 1 and triggers a re-render
+    }
 
     protected function prepareData()
     {

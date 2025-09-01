@@ -43,3 +43,61 @@ describe('rendering', function () {
             ]);
     });
 });
+
+// the filter has been applied to the prepareData method
+
+// describe('initialisation', function () {
+//     // Test component setup and initial state such as default values and data loading.
+// });
+
+// describe('user interactions', function () {
+//     // Test form submissions, clicks, and UI responses to user actions.
+// });
+
+/**
+ * Test silent event dispatching and responses to external events.
+ * Use this section when events happen without direct user interaction.
+ */
+describe('reactivity & events', function () {
+
+    it('refreshes to show new product after model-saved event', function () {
+        $productOne = createProduct();
+        $component = Livewire::test(ProductIndex::class);
+        $productTwo = createProduct();
+
+        // Only the first product should be visible initially
+        $component->assertSee(Str::limit($productOne->name, 60))
+            ->assertDontSee(Str::limit($productTwo->name, 60));
+
+        // After refreshComponent, both products should be visible
+        $component->dispatch('model-saved')
+            ->assertSee([
+                Str::limit($productTwo->name, 60),
+                Str::limit($productOne->name, 60),
+            ]);
+    });
+
+    it('refreshes to show updated product after model-saved event', function () {
+        $product = createProduct(['code' => 'OriginalCode']);
+        $originalCode = $product->code;
+
+        $component = Livewire::test(ProductIndex::class);
+        $component->assertSee($originalCode);
+
+        $product->update(['code' => 'UpdatedCode']);
+        $updatedCode = $product->code;
+
+        // After model-saved event, should see new code
+        $component->dispatch('model-saved')
+            ->assertSee($updatedCode)
+            ->assertDontSee($originalCode);
+    });
+});
+
+// describe('validation', function () {
+//     // Test that invalid data is properly rejected with appropriate error messages.
+// });
+
+// describe('data persistence', function () {
+//     // Test successful save/update/delete operations and their side effects.
+// });
