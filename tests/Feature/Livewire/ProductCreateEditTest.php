@@ -5,45 +5,111 @@ use App\Livewire\ProductCreateEdit;
 use App\Models\Product;
 use Livewire\Livewire;
 
-it('casts the price correctly', function () {})->todo();
-
-// Test what users see and interact with such as buttons, forms, and lists.
-// Focus on the visual output and UI state, not the underlying implementation.
+/**
+ * ==========================================================================
+ * RENDERING
+ * ==========================================================================
+ * Tests the visual output and UI state of the component. Covers how data is
+ * displayed to users, including empty states, populated forms, lists with
+ * varying record counts, and the presence of interactive elements like buttons
+ * and form fields.
+ *
+ * Focus on what users see, not how it's implemented.
+ */
 describe('rendering', function () {
-    // it('renders successfully', function () {
-    //     Livewire::test(ProductCreateEdit::class)->assertOk();
-    // });
+    it('renders successfully', function () {
+        Livewire::test(ProductCreateEdit::class)->assertOk();
+    });
     /**
      * Here we are testing form field bindings rather than HTML elements or
      * labels. Bindings are always present when the form renders correctly and
      * won't break if styling, labels, or input types change.
      */
-    // it('renders form with correct fields', function () {
-    //     Livewire::test(ProductCreateEdit::class)
-    //         ->assertSee('form.name');
-    //     // ->assertSee('form.headline')
-    //     // ->assertSee('form.description');
+    it('renders form with correct fields', function () {
+        Livewire::test(ProductCreateEdit::class)
+            ->assertSee([
+                'form.name',
+                'form.code',
+                'form.headline',
+                'form.description',
+                'form.main_image',
+                'form.slug',
+                'form.department',
+                'form.price',
+                'form.stock',
+                'form.special_start_date',
+                'form.special_end_date',
+                'form.special_price',
+                'form.extra_data',
+                'form.active',
+            ]);
+    });
 
-    //     // name
-    //     // headline
-    //     // description
-    //     // main_image
-    //     // slug
-    //     // code
-    //     // department
-    //     // price
-    //     // stock
-    //     // special_start_date
-    //     // special_end_date
-    //     // special_price
-    //     // extra_data
-    //     // active
-
-    // });
+    it('renders form with save and cancel buttons', function () {
+        Livewire::test(ProductCreateEdit::class)
+            ->assertSee('SAVE')
+            ->assertSee('CANCEL');
+    });
 });
 
+/**
+ * ==========================================================================
+ * INITIALISATION
+ * ==========================================================================
+ * Tests the component's setup behavior when first loaded. Verifies that forms
+ * start with appropriate default values for new records, correctly populate
+ * with existing data when editing, and that all properties are bound and ready
+ * for user interaction. Covers both "create new" and "edit existing" scenarios.
+ */
 describe('initialisation', function () {
-    // Test component setup and initial state such as default values and data loading.
+    it('initialises form with correct values when creating', function () {
+        $component = Livewire::test(ProductCreateEdit::class)
+            ->call('create');
+
+        expect($component->get('form.name'))->toBe('')
+            ->and($component->get('form.code'))->toBe('')
+            ->and($component->get('form.headline'))->toBe('')
+            ->and($component->get('form.description'))->toBe('')
+            //  ->and($component->get('form.main_image'))->toBe()
+            //  ->and($component->get('form.slug'))->toBe()
+            //  ->and($component->get('form.department'))->toBe()
+            //  ->and($component->get('form.price'))->toBe(0.00)
+            ->and($component->get('form.stock'))->toBe(0)
+            //  ->and($component->get('form.special_start_date'))->toBe()
+            //  ->and($component->get('form.special_end_date'))->toBe()
+            //  ->and($component->get('form.special_price'))->toBe()
+            //  ->and($component->get('form.extra_data'))->toBe()
+            ->and($component->get('form.active'))->toBeTrue();
+
+        // Test component state
+        expect($component->get('showModal'))->toBeTrue();
+
+    });
+
+    /**
+     * When testing against existing model data, assertSet() is fine since
+     * we're comparing actual values, not testing falsy value distinctions.
+     */
+    it('initialises form with existing data when editing', function () {
+        $product = createProduct();
+
+        Livewire::test(ProductCreateEdit::class)
+            ->call('edit', $product->id)
+            ->assertSet('form.name', $product->name)
+            ->assertSet('form.code', $product->code)
+            ->assertSet('form.headline', $product->headline)
+            ->assertSet('form.description', $product->description)
+            ->assertSet('form.main_image', $product->main_image)
+            ->assertSet('form.slug', $product->slug)
+            // ->assertSet('form.department', $product->department)
+            // ->assertSet('form.price', $product->price)
+            ->assertSet('form.stock', $product->stock)
+            // ->assertSet('form.special_start_date', $product->special_start_date)
+            // ->assertSet('form.special_end_date', $product->special_end_date)
+            // ->assertSet('form.special_price', $product->special_price)
+            ->assertSet('form.extra_data', $product->extra_data)
+            ->assertSet('form.active', $product->active);
+    });
 });
 
 describe('user interactions', function () {
@@ -160,3 +226,5 @@ it('validates numeric input correctly', function () {
         ->set('price', -10.00)
         ->assertHasErrors('price');
 })->todo();
+
+it('casts the price correctly', function () {})->todo();

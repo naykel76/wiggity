@@ -17,10 +17,7 @@ class ProductCreateEdit extends Component
 
     public function mount()
     {
-        $model = $this->modelClass::find(1);
-
-        $this->mode == 'create'
-            ? $this->form->createAndInit(useFactory: true)
-            : $this->form->init($model);
+        // $model = $this->modelClass::find(2);
+        // $this->form->init($model);
     }
 }

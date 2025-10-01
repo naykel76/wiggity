@@ -24,21 +24,35 @@ class ProductFormObject extends Form
     #[Validate('nullable|boolean')]
     public bool $active = true;
 
-    #[Validate('numeric|min:0')]
-    public float $price = 0.0;
-
-    #[Validate('integer|min:0')]
-    public int $stock = 0;
-
     public string $code = '';
 
     // public string $main_image = '';
     // public string $slug = '';
     // public string $department = '';
+    // public string $extra_data = '';
+
+    /**
+     * ======================================================================
+     * Date Properties
+     * ======================================================================
+     */
+
     // public string $special_start_date = '';
     // public string $special_end_date = '';
-    // public string $special_price = '';
-    // public string $extra_data = '';
+
+    /**
+     * ======================================================================
+     * Numeric Properties
+     * ======================================================================
+     */
+    #[Validate('nullable|numeric|min:0|max:99999.99')]
+    public string $price = '0.00';
+
+    #[Validate('nullable|numeric|min:0|max:99999.99')]
+    public ?float $special_price = null;
+
+    #[Validate('integer|min:0')]
+    public int $stock = 0;
 
     protected function rules()
     {
@@ -47,19 +61,25 @@ class ProductFormObject extends Form
         ];
     }
 
+    /**
+     * ======================================================================
+     * NOTES
+     * ======================================================================
+     * - when using price cast, make sure to set the property after
+     *   setFormProperties() to ensure the cast is applied.
+     */
     public function init(Product $model): void
     {
         $this->editing = $model;
         $this->setFormProperties($this->editing);
-        $this->price = $model->price;  // forces cast to run
+
+        // $this->price = $model->price;
     }
 
-    public function createAndInit(bool $useFactory = false)
+    public function createNewModel(array $data = []): Product
     {
-        $model = $useFactory
-            ? Product::factory()->make()
-            : Product::make();
-
-        $this->init($model);
+        return Product::make(array_merge([
+            //
+        ], $data));
     }
 }

@@ -16,7 +16,7 @@ class ProductIndex extends Component
 
     protected string $modelClass = Product::class;
     public string $pageTitle = 'Product Table';
-    public int $perPage = 8;
+    public int $perPage = 16;
     public $departments = Product::DEPARTMENTS;
     public array $filterOptions = [
         'department' => [

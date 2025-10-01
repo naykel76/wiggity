@@ -1,7 +1,7 @@
 <div>
-    <div class="bx">
+    {{-- <div class="bx">
         <x-gt-resource-action action="create" dispatchTo="product-create-edit" text="Create Using DispatchTo" />
-    </div>
+    </div> --}}
     <div class="bx">
         <div class="bx-header flex gap">
             <div class="bx-title">Active Filters</div>
@@ -45,7 +45,7 @@
             @endforeach
         </select>
     </div>
-    {{ $items->links('gotime::pagination.livewire') }}
+
     <x-gt-table>
         <x-slot:thead>
             <tr>
@@ -87,5 +87,17 @@
             @endforelse
         </x-slot:tbody>
     </x-gt-table>
-    {{ $items->links('gotime::pagination.livewire') }}
+
+    <div class="fw7">Simple Pagination</div>
+    {{ $items->links('gotime::pagination.livewire-simple') }}
+    <hr>
+    <div class="fw7">Pagination</div>
+    {{ $items->onEachSide(0)->links('gotime::pagination.livewire') }}
+    <hr>
+
+    <section class="bx bdr-3 bdr-pink">
+        <h2>Pagination Element Examples</h2>
+        <p>These are the individual pagination elements for development purposes.</p>
+        {{ $items->links('pagination-elements') }}
+    </section>
 </div>

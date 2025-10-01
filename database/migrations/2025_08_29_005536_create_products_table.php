@@ -28,13 +28,13 @@ return new class extends Migration
             $table->string('department')->nullable();
 
             // Pricing & Inventory
-            $table->integer('price')->nullable();
+            $table->unsignedInteger('price')->nullable();
             $table->integer('stock')->default(0);
 
             // Special Pricing
             $table->datetime('special_start_date')->nullable();
             $table->datetime('special_end_date')->nullable();
-            $table->integer('special_price')->nullable();
+            $table->unsignedInteger('special_price')->nullable();
 
             // Flexibility & Status
             $table->json('extra_data')->nullable();

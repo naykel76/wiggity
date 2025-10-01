@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
         Product::factory()->create([
             'name' => 'Product One',
             'code' => 'PRO001',
-            'price' => 149.99,
-            'special_price' => 149.99,
+            'price' => 49.90,
+            'special_price' => 20,
         ]);
 
         //  88000.0,
@@ -26,10 +26,11 @@ class DatabaseSeeder extends Seeder
         Product::factory()->create([
             'name' => 'Product Two',
             'code' => 'PRO002',
-            'price' => 887.50,
+            'price' => null,
+            'special_price' => 800,
         ]);
 
-        // Product::factory(100)->create();
+        Product::factory(100)->create();
         // Product::factory(100)->create();
 
         User::factory()->create([

@@ -21,7 +21,7 @@ describe('rendering', function () {
             ->set('perPage', 5)
             ->assertSee($products->first()->title)        // First item should be visible
             ->assertDontSee($products->last()->title)     // Last item should NOT be visible (on page 2)
-            ->assertSee('Results:');
+            ->assertSee('Showing');                       // Pagination text
     });
 
     it('shows empty state message when no products exist', function () {
@@ -44,32 +44,21 @@ describe('rendering', function () {
     });
 });
 
-// the filter has been applied to the prepareData method
-
-// describe('initialisation', function () {
-//     // Test component setup and initial state such as default values and data loading.
-// });
-
-// describe('user interactions', function () {
-//     // Test form submissions, clicks, and UI responses to user actions.
-// });
-
 /**
  * Test silent event dispatching and responses to external events.
  * Use this section when events happen without direct user interaction.
  */
 describe('reactivity & events', function () {
-
-    it('refreshes to show new product after model-saved event', function () {
+    it('shows new product after receiving model-saved event', function () {
         $productOne = createProduct();
         $component = Livewire::test(ProductIndex::class);
         $productTwo = createProduct();
 
-        // Only the first product should be visible initially
+        // Should only see productOne initially
         $component->assertSee(Str::limit($productOne->name, 60))
             ->assertDontSee(Str::limit($productTwo->name, 60));
 
-        // After refreshComponent, both products should be visible
+        // After event, should see both products
         $component->dispatch('model-saved')
             ->assertSee([
                 Str::limit($productTwo->name, 60),
@@ -77,7 +66,7 @@ describe('reactivity & events', function () {
             ]);
     });
 
-    it('refreshes to show updated product after model-saved event', function () {
+    it('shows updated product after receiving model-saved event', function () {
         $product = createProduct(['code' => 'OriginalCode']);
         $originalCode = $product->code;
 
@@ -94,10 +83,23 @@ describe('reactivity & events', function () {
     });
 });
 
-// describe('validation', function () {
-//     // Test that invalid data is properly rejected with appropriate error messages.
-// });
+// THESE ARE VARIATIONS OF THE SAME TEST FOR DEMONSTRATION PURPOSES
 
-// describe('data persistence', function () {
-//     // Test successful save/update/delete operations and their side effects.
+//
+// Test date formatting and updates
+//
+
+// it('shows updated event after receiving model-saved event', function () {
+//     $event = ScheduledEvent::factory()->future()->create();
+//     $originalStartDate = $event->startDate();
+
+//     $component = Livewire::test(ScheduledEventIndex::class);
+//     $component->assertSee($originalStartDate);
+
+//     $event->update(['start_date' => now()->addDays(10)]);
+//     $updatedStartDate = $event->startDate();
+
+//     $component->dispatch('model-saved')
+//         ->assertSee($updatedStartDate)
+//         ->assertDontSee($originalStartDate);
 // });
