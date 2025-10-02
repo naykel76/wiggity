@@ -28,4 +28,9 @@ class Product extends Model
         'WHA' => 'Whatsits',
         'THI' => 'Thingamajigs',
     ];
+
+    public function detail()
+    {
+        return $this->hasOne(ProductDetail::class);
+    }
 }

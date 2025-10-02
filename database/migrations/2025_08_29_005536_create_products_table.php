@@ -16,15 +16,11 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
 
-            // Product Identity
             $table->string('name')->nullable();      // Basic product title - what you'd call it if someone asked "what are you selling?"
-            $table->string('headline')->nullable();  // Catchy marketing phrase (e.g., "The Ultimate Gadget")
-            $table->text('description')->nullable(); // Full description
-            $table->string('main_image')->nullable();
+            $table->string('code')->unique()->nullable();
+            $table->string('slug')->unique()->nullable();
 
             // Product Codes and Identifiers
-            $table->string('slug')->unique()->nullable();
-            $table->string('code')->unique()->nullable();
             $table->string('department')->nullable();
 
             // Pricing & Inventory

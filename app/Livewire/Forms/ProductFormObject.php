@@ -15,21 +15,27 @@ class ProductFormObject extends Form
     #[Validate('string|max: 255')]
     public string $name = '';
 
-    #[Validate('sometimes')]
-    public string $headline = '';
-
-    #[Validate('sometimes')]
-    public string $description = '';
+    #[Validate]
+    public string $code = '';
 
     #[Validate('nullable|boolean')]
     public bool $active = true;
-
-    public string $code = '';
 
     // public string $main_image = '';
     // public string $slug = '';
     // public string $department = '';
     // public string $extra_data = '';
+
+    /**
+     * ======================================================================
+     * Related Properties (ProductDetail)
+     * ======================================================================
+     */
+    #[Validate('sometimes')]
+    public string $headline = '';
+
+    #[Validate('sometimes')]
+    public string $description = '';
 
     /**
      * ======================================================================
