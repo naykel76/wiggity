@@ -1,18 +1,7 @@
 @use '../../node_modules/nk_jtb/src/maps_and_variables/base' as * with (
-    // $primary: #1e1f27,
-    // $secondary: #419197,
-    // $accent: #78d6c6,
-
     $primary: #d9558c,
     $secondary: #031a37,
     $accent: #e6c637,
-    // $body-bg: #0b101d,
-    // $preferred-fonts: Poppins,
-    // // $color: rgb(228, 232, 236),
-    // $color: rgb(190, 200, 214),
-    // $navbar-bg: transparent,
-    // $navbar-nav-hover-color: #ffbb1c,
-    // $navbar-nav-active-color: #ffbb1c
 );
 @use '../../node_modules/nk_jtb/src/maps_and_variables/components' as * with (
     $navbar-bg: rgb(35, 29, 49)
@@ -20,7 +9,7 @@
 
 @use '../../node_modules/nk_jtb/src/build' as *;
 @use '../../node_modules/nk_jtb/src/extras/nk-docs' as * with($question-color: #c40c9a);
-
+@use "../../node_modules/nk_jtb/src/extras/nk-app" as *;
 
 th, td {
     padding-block: 0.5rem;
