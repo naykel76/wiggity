@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Product;
+
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -12,7 +14,7 @@
 */
 
 pest()->extend(Tests\TestCase::class)
- // ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
+    ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
     ->in('Feature');
 
 /*
@@ -41,7 +43,12 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function createProduct()
 {
-    // ..
+    return Product::factory()->create();
+}
+
+function makeProduct()
+{
+    return Product::factory()->make();
 }

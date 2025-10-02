@@ -15,18 +15,18 @@ class DatabaseSeeder extends Seeder
         Product::factory()->create([
             'name' => 'Product One',
             'code' => 'PRO001',
-            // 'price' => 49.90,
+            'price' => 49.90,
             // 'special_price' => 20,
         ]);
 
         Product::factory()->create([
             'name' => 'Product Two',
             'code' => 'PRO002',
-            // 'price' => null,
+            'price' => null,
             // 'special_price' => 800,
         ]);
 
-        Product::factory(5)
+        Product::factory(50)
             ->has(ProductDetail::factory())
             ->create();
 

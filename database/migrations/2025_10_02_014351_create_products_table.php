@@ -13,9 +13,21 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
+
+            // Basic Info
             $table->string('name')->nullable();      // what you'd call it if someone asked "what are you selling?"
             $table->string('code')->unique()->nullable();
-            $table->timestamps();
+
+            // Product Codes and Identifiers
+            $table->string('department')->nullable();
+
+            // Pricing & Inventory
+            $table->unsignedInteger('price')->nullable();
+            $table->integer('stock')->default(0);
+
+            // Flexibility & Status
+            $table->boolean('active')->default(true);
         });
     }
 
