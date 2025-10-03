@@ -18,7 +18,7 @@ use Naykel\Gotime\Traits\Formable;
  * field) it will throw a type error and a 500 error page instead of a
  * validation error. Not good UX.
  * General rule for Livewire forms:
- * 
+ *
  * - ✅ Type hint `string`, `bool`, `array` (user input naturally matches)
  * - ❌ Don't type hint `int`, `float`, or numeric types (let validation handle it)
  */

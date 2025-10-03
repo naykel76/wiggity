@@ -12,11 +12,14 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        Product::factory(150)->has(ProductDetail::factory())->create();
+
         Product::factory()->create([
             'name' => 'Product One',
             'code' => 'PRO001',
             'price' => 49.90,
             // 'special_price' => 20,
+            'created_at' => now(),
         ]);
 
         Product::factory()->create([
@@ -24,11 +27,8 @@ class DatabaseSeeder extends Seeder
             'code' => 'PRO002',
             'price' => null,
             // 'special_price' => 800,
+            'created_at' => now(),
         ]);
-
-        Product::factory(50)
-            ->has(ProductDetail::factory())
-            ->create();
 
         User::factory()->create([
             'name' => 'Test User',

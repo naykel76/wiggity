@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'price' => fake()->numberBetween(500, 100000),
             'stock' => fake()->numberBetween(0, 15),
             'active' => fake()->boolean(),
-            'created_at' => Carbon::instance($this->faker->dateTimeBetween('-18 months', '-1 months')),
+            'created_at' => Carbon::instance($this->faker->dateTimeBetween('-100 days', '-1 days')),
         ];
     }
 }

@@ -1,8 +1,6 @@
 <?php
 
-use App\Livewire\Forms\ProductFormObject;
 use App\Livewire\ProductCreateEdit;
-use App\Models\Product;
 use Livewire\Livewire;
 
 /**
