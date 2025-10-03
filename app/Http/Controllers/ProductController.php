@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateEditProductRequest;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->get();
+        $products = Product::with('productDetail')->latest()->get();
 
         return view('products.index', [
             'pageTitle' => 'Products',
@@ -24,17 +24,19 @@ class ProductController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(CreateEditProductRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'code' => 'required|string|max:255|unique:products,code',
-        ]);
+        $validatedData = $request->validated();
 
-        Product::create([
-            'name' => $request->name,
-            'code' => $request->code,
-        ]);
+        // Create the product
+        $product = Product::create($validatedData);
+
+        // Only create ProductDetail if data is provided
+        if ($request->filled('description')) {
+            $product->productDetail()->create([
+                'description' => $request->description,
+            ]);
+        }
 
         return redirect()->route('products.index')
             ->with('success', 'Product created successfully.');
@@ -42,6 +44,8 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
+        $product->load('productDetail');
+
         return view('products.show', [
             'pageTitle' => 'Product Details',
             'product' => $product,
@@ -50,23 +54,30 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        $product->load('productDetail');
+
         return view('products.edit', [
             'pageTitle' => 'Edit Product',
             'product' => $product,
         ]);
     }
 
-    public function update(Request $request, Product $product)
+    public function update(CreateEditProductRequest $request, Product $product)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'code' => 'required|string|max:255|unique:products,code,' . $product->id,
-        ]);
+        $validatedData = $request->validated();
 
-        $product->update([
-            'name' => $request->name,
-            'code' => $request->code,
-        ]);
+        // Update the product itself
+        $product->update($validatedData);
+
+        // This will need to be adjusted if more fields are added
+        if ($request->filled('description')) {
+            $product->productDetail()->updateOrCreate(
+                ['product_id' => $product->id],
+                ['description' => $request->description]
+            );
+        } else {
+            $product->productDetail()->delete();
+        }
 
         return redirect()->route('products.index')
             ->with('success', 'Product updated successfully.');
