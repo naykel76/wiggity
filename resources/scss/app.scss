@@ -1,16 +1,17 @@
 @use '../../node_modules/nk_jtb/src/maps_and_variables/base' as * with (
-    $primary: #d9558c,
-    $secondary: #031a37,
-    $accent: #e6c637,
+    $primary: hsl(195, 14%, 11%),
+    $secondary: hsl(202, 100%, 41%),
+    $accent: #e6c637
 );
 @use '../../node_modules/nk_jtb/src/maps_and_variables/components' as * with (
-    $navbar-bg: rgb(35, 29, 49)
+    $navbar-bg: $primary
 );
 
 @use '../../node_modules/nk_jtb/src/build' as *;
 @use '../../node_modules/nk_jtb/src/extras/nk-docs' as * with($question-color: #c40c9a);
-@use "../../node_modules/nk_jtb/src/extras/nk-app" as *;
+@use '../../node_modules/nk_jtb/src/extras/nk-app' as *;
 
-th, td {
+th,
+td {
     padding-block: 0.5rem;
 }

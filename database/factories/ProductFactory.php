@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,6 +18,11 @@ class ProductFactory extends Factory
         return [
             'name' => fake()->sentence(random_int(3, 10)),
             'code' => fake()->unique()->bothify($department . '-####'),
+            'department' => $department,
+            'price' => fake()->numberBetween(500, 100000),
+            'stock' => fake()->numberBetween(0, 15),
+            'active' => fake()->boolean(),
+            'created_at' => Carbon::instance($this->faker->dateTimeBetween('-100 days', '-1 days')),
         ];
     }
 }
