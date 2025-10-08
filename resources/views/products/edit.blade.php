@@ -17,9 +17,15 @@
         </x-gotime::v2.input.partials.form-row>
 
         <x-gotime::v2.input.partials.form-row>
-            <x-gotime::v2.input.partials.label for="code" label="Product Name" />
+            <x-gotime::v2.input.partials.label for="code" label="Product Code" />
             <x-gotime::v2.input.controls.input for="code" value="{{ old('code', $product->code) }}" />
             <x-gotime::v2.input.partials.error for="code" />
+        </x-gotime::v2.input.partials.form-row>
+
+        <x-gotime::v2.input.partials.form-row>
+            <x-gotime::v2.input.partials.label for="description" label="Description" />
+            <textarea id="description" name="description" rows="4">{{ old('description', $product->productDetail?->description) }}</textarea>
+            <x-gotime::v2.input.partials.error for="description" />
         </x-gotime::v2.input.partials.form-row>
 
         <div class="tar">

@@ -20,6 +20,12 @@
             <x-gotime::v2.input.partials.error for="code" />
         </x-gotime::v2.input.partials.form-row>
 
+        <x-gotime::v2.input.partials.form-row>
+            <x-gotime::v2.input.partials.label for="description" label="Description" />
+            <textarea id="description" name="description" rows="4">{{ old('description') }}</textarea>
+            <x-gotime::v2.input.partials.error for="description" />
+        </x-gotime::v2.input.partials.form-row>
+
         <div class="tar">
             <button type="submit" class="btn primary">Create Product</button>
             <a href="{{ route('products.index') }}" class="btn">Cancel</a>
