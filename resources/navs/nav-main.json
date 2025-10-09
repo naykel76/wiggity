@@ -7,6 +7,21 @@
                 "exclude_route": true
             },
             {
+                "name": "Filters",
+                "route_name": "filters",
+                "view": "pages.filter-examples"
+            },
+            {
+                "name": "Date Range",
+                "route_name": "filters.date-range",
+                "view": "pages.filter-examples-date-range"
+            },
+            {
+                "name": "Pagination",
+                "route_name": "pagination",
+                "view": "pages.pagination-examples"
+            },
+            {
                 "name": "Products",
                 "route_name": "products.index",
                 "exclude_route": true

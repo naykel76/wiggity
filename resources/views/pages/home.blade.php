@@ -8,4 +8,11 @@
         </div>
     </section>
 
+    <section class="py-3">
+        <div class="container-md">
+            <livewire:product-index />
+            <livewire:product-create-edit />
+        </div>
+    </section>
+
 </x-gt-app-layout>
