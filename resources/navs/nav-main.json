@@ -2,34 +2,79 @@
     "main": {
         "links": [
             {
-                "name": "Home",
-                "route_name": "home",
-                "exclude_route": true
+                "name": "WIP",
+                "route_name": "pages.wip",
+                "type": "md"
             },
             {
-                "name": "Filters",
-                "route_name": "filters",
-                "view": "pages.filter-examples"
+                "name": "TLDR",
+                "exclude_route": true,
+                "children": [
+                    {
+                        "name": "Events",
+                        "route_name": "pages.cheatsheets.events",
+                        "type": "md"
+                    }
+                ]
             },
             {
-                "name": "Date Range",
-                "route_name": "filters.date-range",
-                "view": "pages.filter-examples-date-range"
+                "name": "Docs",
+                "exclude_route": true,
+                "children": [
+                    {
+                        "name": "Queries",
+                        "route_name": "pages.guides.efficient-reporting-queries",
+                        "type": "md"
+                    }
+                ]
             },
             {
-                "name": "Pagination",
-                "route_name": "pagination",
-                "view": "pages.pagination-examples"
+                "name": "Interactive Examples",
+                "exclude_route": true,
+                "children": [
+                    {
+                        "name": "Filters",
+                        "route_name": "filters",
+                        "view": "pages.filter-examples"
+                    },
+                    {
+                        "name": "Date Range",
+                        "route_name": "filters.date-range",
+                        "view": "pages.filter-examples-date-range"
+                    },
+                    {
+                        "name": "Pagination",
+                        "route_name": "pagination",
+                        "view": "pages.pagination-examples"
+                    }
+                ]
             },
             {
-                "name": "Products",
-                "route_name": "products.index",
-                "exclude_route": true
+                "name": "Livewire Examples",
+                "exclude_route": true,
+                "children": [
+                    {
+                        "name": "Products (Admin)",
+                        "route_name": "admin.products.index",
+                        "exclude_route": true
+                    }
+                ]
             },
             {
-                "name": "Create",
-                "route_name": "products.create",
-                "exclude_route": true
+                "name": "Laravel Examples",
+                "exclude_route": true,
+                "children": [
+                    {
+                        "name": "Products",
+                        "route_name": "products.index",
+                        "exclude_route": true
+                    },
+                    {
+                        "name": "Create",
+                        "route_name": "products.create",
+                        "exclude_route": true
+                    }
+                ]
             }
         ]
     },

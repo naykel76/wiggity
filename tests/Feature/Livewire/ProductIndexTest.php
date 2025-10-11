@@ -15,13 +15,21 @@ describe('rendering', function () {
     });
 
     it('displays products in a paginated table', function () {
-        $products = Product::factory()->count(10)->create();
+        $products = Product::factory(10)->create();
 
         Livewire::test(ProductIndex::class)
             ->set('perPage', 5)
-            ->assertSee($products->first()->title)        // First item should be visible
-            ->assertDontSee($products->last()->title)     // Last item should NOT be visible (on page 2)
-            ->assertSee('Showing');                       // Pagination text
+            ->assertSee($products->first()->code)        // First item should be visible
+            ->assertDontSee($products->last()->code)     // Last item should NOT be visible on page 1
+            ->call('gotoPage', 2)
+            ->assertDontSee($products->first()->code)    // First item should NOT be visible on page 2
+            ->assertSee($products->last()->code);        // Last item should now be visible on page 2
+    });
+
+    it('always displays the results count message', function () {
+        Product::factory(1)->create();
+        Livewire::test(ProductIndex::class)
+            ->assertSee('results');
     });
 
     it('shows empty state message when no products exist', function () {

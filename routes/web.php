@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Livewire\ProductIndex;
 use Illuminate\Support\Facades\Route;
 use Naykel\Gotime\RouteBuilder;
 
@@ -25,5 +26,7 @@ Route::resource('products', ProductController::class);
 |--------------------------------------------------------------------------
 |
 */
+
+Route::get('/admin/products', ProductIndex::class)->name('admin.products.index');
 
 // (new RouteBuilder('nav-admin'))->create();

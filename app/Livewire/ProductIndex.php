@@ -37,6 +37,11 @@ class ProductIndex extends Component
     // to create new components for each one.
     public string $example = '';
 
+    public function export()
+    {
+        return $this->modelClass::query()->toCsv();
+    }
+
     #[On('model-saved')]
     public function refreshComponent()
     {
