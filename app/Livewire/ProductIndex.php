@@ -32,16 +32,23 @@ class ProductIndex extends Component
         ],
     ];
 
+<<<<<<< Updated upstream
     // define the example you want to use, otherwise just show the normal table.
     // This should allow me to build out different examples without needing
     // to create new components for each one.
     public string $example = '';
 
+=======
+>>>>>>> Stashed changes
     public function export()
     {
         return $this->modelClass::query()->toCsv();
     }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     #[On('model-saved')]
     public function refreshComponent()
     {

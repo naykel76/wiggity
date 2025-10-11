@@ -18,6 +18,7 @@
                 ]
             },
             {
+<<<<<<< Updated upstream
                 "name": "Docs",
                 "exclude_route": true,
                 "children": [
@@ -75,6 +76,16 @@
                         "exclude_route": true
                     }
                 ]
+=======
+                "name": "Products (Admin)",
+                "route_name": "admin.products.index",
+                "exclude_route": true
+            },
+            {
+                "name": "Create",
+                "route_name": "products.create",
+                "exclude_route": true
+>>>>>>> Stashed changes
             }
         ]
     },
