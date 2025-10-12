@@ -2,9 +2,36 @@
     "main": {
         "links": [
             {
-                "name": "Home",
-                "route_name": "home",
-                "exclude_route": true
+                "name": "Cheatsheets and Guides",
+                "exclude_route": true,
+                "children": [
+                    {
+                        "name": "Events",
+                        "route_name": "pages.cheatsheets.events",
+                        "type": "md"
+                    },
+                    {
+                        "name": "Queries",
+                        "route_name": "pages.guides.efficient-reporting-queries",
+                        "type": "md"
+                    }
+                ]
+            },
+            {
+                "name": "TL;DR",
+                "exclude_route": true,
+                "children": [
+                    {
+                        "name": "Building a Laravel Resource with Related Models",
+                        "route_name": "pages.quickstart.building-a-laravel-resource-with-related-models",
+                        "type": "md"
+                    },
+                    {
+                        "name": "Building a Livewire Component System",
+                        "route_name": "pages.quickstart.building-a-livewire-component-system",
+                        "type": "md"
+                    }
+                ]
             }
         ]
     },
