@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Naykel\Gotime\RouteBuilder;
 
@@ -16,6 +17,7 @@ Route::get('/', function () {
 
 (new RouteBuilder('nav-main'))->create();
 
+Route::resource('products', ProductController::class);
 /*
 |--------------------------------------------------------------------------
 | Admin Routes

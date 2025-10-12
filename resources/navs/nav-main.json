@@ -32,6 +32,22 @@
                         "type": "md"
                     }
                 ]
+            },
+            {
+                "name": "Laravel Examples",
+                "exclude_route": true,
+                "children": [
+                    {
+                        "name": "Index",
+                        "route_name": "products.index",
+                        "exclude_route": true
+                    },
+                    {
+                        "name": "Create",
+                        "route_name": "products.create",
+                        "exclude_route": true
+                    }
+                ]
             }
         ]
     },
