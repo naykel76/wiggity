@@ -4,8 +4,8 @@
     - [1. Create Livewire Components](#1-create-livewire-components)
     - [2. Add Route and Update Navigation (optional)](#2-add-route-and-update-navigation-optional)
 - [Component Implementation](#component-implementation)
-    - [`ProductIndex`](#productindex)
-    - [`ProductCreateEdit`](#productcreateedit)
+    - [`Index`](#index)
+    - [`CreateEdit`](#createedit)
     - [`ProductFormObject`](#productformobject)
 
 
@@ -13,14 +13,14 @@
 
 ### 1. Create Livewire Components
 ```bash +torchlight-bash
-php artisan livewire:make Products/Index
-php artisan livewire:make Products/CreateEdit
+php artisan livewire:make Products/Index --pest
+php artisan livewire:make Products/CreateEdit --pest
 php artisan livewire:form ProductFormObject
 ```
 
 ### 2. Add Route and Update Navigation (optional)
 ```php +torchlight-php
-use App\Livewire\Product\Index as ProductIndex;
+use App\Livewire\Products\Index as ProductIndex;
 
 Route::prefix('admin')->name('admin')->group(function () {
     Route::get('/products', ProductIndex::class)->name('.products.index');
@@ -30,18 +30,24 @@ Route::prefix('admin')->name('admin')->group(function () {
 ```json +torchlight-json
 {
     "name": "Product",
-    "route_name": "admin.products.index"
+    "route_name": "admin.products.index",
+    "exclude_route": true
 }
 ```
 
 ## Component Implementation
 
-### `ProductIndex`
+### `Index`
 
+- [ ] Edit button 
+- [ ] Filters
+    - [ ] Date range
+- [ ] Export button
+- [ ] Searchable columns
+- [ ] Sorting
+- [ ] Pagination
 
-Add edit button 
-
-### `ProductCreateEdit`
+### `CreateEdit`
 
 `gtl:form-class` command scaffolds this basic functionality.
 
@@ -66,8 +72,3 @@ buttons
 
 
 
-**Using**
-
-- Index will likely be a full-page component so this is handled in the route.
-- When `CreateEdit` component is separate component and used in a modal att the
-  component to the index page

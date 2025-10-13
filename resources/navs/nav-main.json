@@ -34,6 +34,27 @@
                 ]
             },
             {
+                "name": "Interactive Examples",
+                "exclude_route": true,
+                "children": [
+                    {
+                        "name": "Filters",
+                        "route_name": "filters",
+                        "view": "pages.interactive-examples.filters"
+                    },
+                    {
+                        "name": "Date Range",
+                        "route_name": "filters.date-range",
+                        "view": "pages.interactive-examples.filters-date-range"
+                    },
+                    {
+                        "name": "Pagination",
+                        "route_name": "pagination",
+                        "view": "pages.interactive-examples.pagination"
+                    }
+                ]
+            },
+            {
                 "name": "Laravel Examples",
                 "exclude_route": true,
                 "children": [
