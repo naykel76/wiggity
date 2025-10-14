@@ -1,8 +1,10 @@
 @use '../../node_modules/nk_jtb/src/maps_and_variables/base' as * with (
     $primary: hsl(195, 14%, 11%),
     $secondary: hsl(202, 100%, 41%),
-    $accent: #e6c637
+    $accent: #e6c637,
+    $base-font: ( 'Inter', system-ui, sans-serif )
 );
+
 @use '../../node_modules/nk_jtb/src/maps_and_variables/components' as * with (
     $navbar-bg: $primary
 );

@@ -9,7 +9,7 @@
     </section>
 
     <section class="py-3">
-        <div class="container-md">
+        <div class="container-lg">
             <livewire:products.index />
             <livewire:products.create-edit />
         </div>
