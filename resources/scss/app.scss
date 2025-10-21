@@ -2,7 +2,11 @@
     $primary: hsl(195, 14%, 11%),
     $secondary: hsl(202, 100%, 41%),
     $accent: #e6c637,
-    $base-font: ( 'Inter', system-ui, sans-serif )
+    $base-font: (
+        'Inter',
+        system-ui,
+        sans-serif
+    )
 );
 
 @use '../../node_modules/nk_jtb/src/maps_and_variables/components' as * with (
@@ -16,4 +20,106 @@
 th,
 td {
     padding-block: 0.5rem;
+}
+
+.minh-screen {
+    min-height: 100vh;
+}
+
+.minh-50vh {
+    min-height: 50vh;
+}
+
+.bg-stripe-blue {
+    background: repeating-linear-gradient(45deg, #dbeafe, #dbeafe 10px, #bfdbfe 10px, #bfdbfe 20px);
+}
+
+.bg-stripe-red {
+    background: repeating-linear-gradient(45deg, #fee2e2, #fee2e2 10px, #fecaca 10px, #fecaca 20px);
+}
+
+.bg-stripe-green {
+    background: repeating-linear-gradient(45deg, #d1fae5, #d1fae5 10px, #a7f3d0 10px, #a7f3d0 20px);
+}
+
+.bg-stripe-yellow {
+    background: repeating-linear-gradient(45deg, #fef3c7, #fef3c7 10px, #fde68a 10px, #fde68a 20px);
+}
+
+.bg-stripe-purple {
+    background: repeating-linear-gradient(45deg, #ddd6fe, #ddd6fe 10px, #c4b5fd 10px, #c4b5fd 20px);
+}
+
+.bg-stripe-pink {
+    background: repeating-linear-gradient(45deg, #fce7f3, #fce7f3 10px, #fbcfe8 10px, #fbcfe8 20px);
+}
+
+.bg-stripe-indigo {
+    background: repeating-linear-gradient(45deg, #e0e7ff, #e0e7ff 10px, #c7d2fe 10px, #c7d2fe 20px);
+}
+
+.bg-stripe-orange {
+    background: repeating-linear-gradient(45deg, #fed7aa, #fed7aa 10px, #fdba74 10px, #fdba74 20px);
+}
+
+.bg-stripe-teal {
+    background: repeating-linear-gradient(45deg, #ccfbf1, #ccfbf1 10px, #99f6e4 10px, #99f6e4 20px);
+}
+
+.bg-stripe-gray {
+    background: repeating-linear-gradient(45deg, #f3f4f6, #f3f4f6 10px, #e5e7eb 10px, #e5e7eb 20px);
+}
+
+// layouts
+// -----------------------------------------------------------------------------
+.layout-holy-grail {
+    display: grid;
+    grid-template-columns: 250px 1fr 250px;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        'header header header'
+        'sidebar-left main sidebar-right'
+        'footer footer footer';
+}
+
+.layout-sidebar-left {
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        'sidebar header'
+        'sidebar main'
+        'sidebar footer';
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .layout-holy-grail {
+        grid-template-columns: 200px 1fr;
+        grid-template-areas:
+            'header header'
+            'sidebar-left main'
+            'sidebar-left sidebar-right'
+            'footer footer';
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .layout-holy-grail {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'header'
+            'main'
+            'sidebar-left'
+            'sidebar-right'
+            'footer';
+    }
+    .layout-sidebar-left {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'header'
+            'main'
+            'aside'
+            'footer';
+    }
 }

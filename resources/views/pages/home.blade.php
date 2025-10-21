@@ -1,4 +1,4 @@
-<x-gt-app-layout layout="{{ config('gotime.template') }}">
+<x-layouts.app :$title>
 
     <section class="bg-blue-950 py-5-3-2 txt-white">
         <div class="container-md tac">
@@ -8,4 +8,21 @@
         </div>
     </section>
 
-</x-gt-app-layout>
+
+
+    <div class="container py">
+        <div class="grid cols-4">
+            <div class="bx">
+                <x-gt-menu filename="nav-main" menuname="dashboard" withIcons />
+            </div>
+            <div class="bx">
+                <x-gt-menu filename="nav-main" menuname="dashboard" class="menu" withIcons />
+            </div>
+     
+        </div>
+    </div>
+    
+           <div class="navbar">
+                <x-gt-menu filename="nav-main" menuname="dashboard" withIcons />
+            </div>
+</x-layouts.app>

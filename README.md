@@ -2,6 +2,23 @@
 
 # NAYKEL Web Application
 
+
+main content area
+sidebar
+footer
+header
+
+
+
+
+
+
+
+
+
+
+
+
 You can optionally define a slot in your app layout. By default, any content
 will be placed in the main area. However, if you explicitly define a main slot,
 it will override the default main content.
