@@ -13,6 +13,12 @@ class WidgetFormObject extends Form
 {
     use Crudable, Formable;
 
+    public array $storage = [
+        'disk' => 'public',
+        'dbColumn' => 'image_name',
+        'path' => 'uploads/images',
+    ];
+
     #[Validate('nullable|string|max:255')]
     public string $name = '';
 

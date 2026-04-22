@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 
 class Widget extends Model
 {
@@ -58,5 +59,10 @@ class Widget extends Model
     // ======================================================================
     // -- Methods --
     // ======================================================================
-
+    public function featuredImageUrl(): string
+    {
+        return $this->image_name
+            ? Storage::disk('public')->url($this->image_name)
+            : url('/svg/placeholder.svg');
+    }
 }

@@ -4,8 +4,7 @@ use App\Models\Widget;
 use Naykel\Gotime\Livewire\BaseIndex;
 use Naykel\Gotime\Traits\Sortable;
 
-new class extends BaseIndex
-{
+new class extends BaseIndex {
     use Sortable;
 
     protected string $modelClass = Widget::class;
@@ -23,7 +22,8 @@ new class extends BaseIndex
 ?>
 
 <div>
-    <x-gt-resource-action action="create" :$routePrefix />
+    <x-gt-button action="create" :$routePrefix text="Create (modal)" class="primary sm" />
+    <x-gt-button action="create" :$routePrefix text="Create (modal)" dispatchTo="admin::widget.form-modal" class="primary-outline sm" />
     <x-gt-table>
         <x-slot:thead>
             <tr>
@@ -41,8 +41,9 @@ new class extends BaseIndex
                     <td>{{ $item->code }}</td>
                     <td>{{ $item->status }}</td>
                     <td>{{ $item->is_active ? 'Yes' : 'No' }}</td>
-                    <td class="whitespace-nowrap">
-                        <x-gt-resource-action action="edit" :$routePrefix :id="$item->id" />
+                    <td class="whitespace-nowrap space-x">
+                        <x-gt-resource-action action="edit" :$routePrefix :id="$item->id" text="Route"/>
+                        <x-gt-resource-action action="edit" :id="$item->id" dispatchTo="admin::widget.form-modal" text="Modal"/>
                     </td>
                 </tr>
             @empty
@@ -53,4 +54,6 @@ new class extends BaseIndex
         </x-slot:tbody>
     </x-gt-table>
     {{ $this->items->links('gotime::pagination.livewire') }}
+
+    <livewire:admin::widget.form-modal />
 </div>
