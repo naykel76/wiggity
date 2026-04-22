@@ -11,6 +11,10 @@
     "skills": [
         "laravel-best-practices",
         "pest-testing",
-        "tailwindcss-development"
+        "code-review",
+        "grill-me",
+        "laravel-database-design",
+        "markdown-formatting",
+        "skill-creation"
     ]
 }
