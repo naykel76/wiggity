@@ -268,6 +268,7 @@ This project has domain-specific skills available. You MUST activate the relevan
 - `grill-me` — Use this skill whenever the user wants to pressure-test a plan, resolve design decisions, or says "grill me".
 - `laravel-database-design` — Use this skill whenever creating or updating database schemas, tables, migrations, models, or factories. Do not wait for an explicit request — if any of these are being created or modified, this skill applies.
 - `markdown-formatting` — Use this skill whenever creating or editing any markdown file. Do not wait for an explicit request — if a markdown file is being created or edited, this skill applies.
+- `nk-livewire-best-practices` — Use this skill whenever creating, modifying, or reviewing Livewire components in a Naykel (Gotime) project. Do not wait for an explicit request — if a Livewire component is involved, this skill applies.
 - `skill-creation` — Use this skill whenever creating, updating, or reviewing a skill file. Do not wait for an explicit request — if a skill is being created or edited, this skill applies.
 
 ## Conventions

@@ -29,13 +29,15 @@ Thumbs.db
 /.codex
 /.github
 /.vscode
+
+
 /tmp
 nk_tasks.md
 z-*
-
 .ai/skills/code-review
 .ai/skills/grill-me
 .ai/skills/laravel-*
 .ai/skills/livewire-*
 .ai/skills/markdown-formatting
+.ai/skills/nk-*
 .ai/skills/skill-creation
