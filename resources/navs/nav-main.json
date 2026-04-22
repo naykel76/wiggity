@@ -5,6 +5,16 @@
                 "name": "Home",
                 "route_name": "home",
                 "exclude_route": true
+            },
+            {
+                "name": "Index",
+                "route_name": "admin.widgets.index",
+                "exclude_route": true
+            },
+            {
+                "name": "Create",
+                "route_name": "admin.widgets.create",
+                "exclude_route": true
             }
         ]
     }
